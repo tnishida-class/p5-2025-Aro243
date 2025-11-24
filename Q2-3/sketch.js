@@ -8,7 +8,13 @@ function setup() {
   const blue = color(0, 51, 160);
 
   // 縞を描く
-  for(let i = 0; i < 9; i++){
+  for(let i = 0; i < 10; i++){ 
+    if(i % 2 == 0){
+      fill(blue);
+    }
+    else{
+      fill(255);
+    }
     // BLANK[1] ヒント：縞の色を交互に変えるには2で割った余りを使おう
     rect(0, i * d, width, (i + 1) * d);
   }
@@ -19,5 +25,6 @@ function setup() {
   rect(0, 0, size, size);
   fill(255);
   rect(d * 2, 0, d, size);
+  rect(0, 2 * d, size, d);
   // BLANK[2] 十字を完成させよう
 }

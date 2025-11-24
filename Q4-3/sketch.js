@@ -1,6 +1,6 @@
 // たくさん出てくるアニメーション
-let balls;
-let targets; // 追加（ボールを当てる的）
+let balls = [];
+let targets = []; // 追加（ボールを当てる的）
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
@@ -49,6 +49,8 @@ function draw(){
 
   if(frameCount % 20 === 0) { // 20フレームごとに新しい的を追加する
     // BLANK[1] 新しい的オブジェクトを作成して targets 配列に追加しよう
+    const r = {x: width / 2, y: height / 2, size: 20, vx: random(-7, 7), vy: random(-7, 7)};
+    targets.push(r);
   }
 
   // ボールに当たった or 大きくなりすぎた的を配列から削除する
@@ -60,6 +62,9 @@ function draw(){
       for(let j = 0; j < balls.length; j++){ // すべてのボールと衝突判定
         let b = balls[j];
         // BLANK[2]
+          if(t.x - t.size / 2 < b.x && b.x < t.x + t.size / 2 && t.y - t.size / 2 < b.y && b.y < t.y + t.size / 2){
+            t = hit
+          }
       }
       if(!hit) activeTargets.push(t); // 衝突していなければ生き残る
     }
